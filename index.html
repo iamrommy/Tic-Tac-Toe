@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="#">
+    <link rel="stylesheet" href="assets/index-e30f7d14.css">
+    <title>Tic Tac Toe</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+        *{
+            margin: 0px;
+            padding: 0px;
+            font-family: 'Roboto', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-purple-200">
+    <!-- Navbar -->
+    <nav class="bg-gradient-to-r from-purple-950 via-purple-700 to-purple-950 text-white h-14 flex items-center justify-between shadow-2xl rounded-b-3xl sticky top-0 mx-1">
+        <div class="hamburger ml-[3%] p-1 inline-block cursor-pointer border-2 border-white rounded-lg md:hidden" onclick="ToggleMenu()">
+            <div class="line h-0.5 w-6 bg-white my-1"></div>
+            <div class="line h-0.5 w-6 bg-white my-1"></div>
+            <div class="line h-0.5 w-6 bg-white my-1"></div>
+        </div>
+        <div class="flex pl-[5%] cursor-pointer">
+            <div class="text-3xl font-semibold">TicTacToe</div>
+            <img class="w-14 invert" src="assets/TicTacToe.png" alt="">
+        </div>
+        </ul>
+        <div id="menu" class="items-center md:space-x-4 mr-[2%] text-2xl bg-purple-900 md:bg-transparent md:text-lg absolute md:static top-16 md:flex w-[42%] md:w-auto rounded-tr-2xl rounded-br-2xl md:-translate-x-0" hidden>
+            <div class="md:hover:underline md:hover:underline-offset-4 cursor-pointer border-2 border-white md:border-none rounded-tr-2xl" onclick="ToggleMenu()">Home</div>
+            <div class="md:hover:underline md:hover:underline-offset-4 cursor-pointer border-2 border-white md:border-none" onclick="ToggleMenu()">Game Rules</div>
+            <div class="md:hover:underline md:hover:underline-offset-4 cursor-pointer border-2 border-white md:border-none" onclick="ToggleMenu()">Practice</div>
+            <div class="md:hover:underline md:hover:underline-offset-4 cursor-pointer border-2 border-white md:border-none rounded-br-2xl" onclick="ToggleMenu()">About Us</div>
+        </div>
+        <div class="flex mr-[5%] items-center space-x-2">
+            <div class="text-lg hover:underline cursor-pointer hidden md:inline-block">Sign in</div>
+            <div class="w-8 border-2 border-white rounded-full p-1 cursor-pointer"><img class="invert" src="assets/login.svg" alt="Err"></div>
+        </div>
+    </nav>
+    
+    <!-- Home page -->
+    <div class="mt-16 justify-evenly flex flex-wrap">
+
+        <!-- tic tac toe -->
+        <div>
+            <div id="boxcontainer" class="inline-grid grid-cols-3 grid-row-3 cursor-pointer text-purple-950 relative">
+                <div id="line" class="bg-purple-900 w-[0vw] md:w-[0vw] h-1 absolute transition-all duration-1000 ease-in-out"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-t-0 border-l-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-t-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-t-0 border-r-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-l-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-r-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-l-0 border-b-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-b-0"></div>
+                <div class="box border-4 border-black h-[20vw] w-[20vw] md:h-[10vw] md:w-[10vw] text-[15vw] md:text-[9vw] flex items-center justify-center hover:bg-purple-300 border-r-0 border-b-0"></div>
+            </div>
+            <div class="flex space-x-[4vw] md:space-x-[2vw] mt-[4vw] md:mt-[3vw] justify-center items-center">
+                <div class="w-[42vw] md:w-[14vw] h-[20vh] md:h-[8vh] flex items-center justify-center">
+                    <span id="TurnFor" class="text-center text-purple-950 text-[8vw] md:text-[2.8vw]">Turn Of X<span>
+                </div>
+                <div class="h-[10vh] md:h-[8vh] w-[10vw] md:w-[8vw] flex items-center justify-center">
+                    <button id="reset" class="text-[4vw] md:text-[2vw] text-white border-black border-2 bg-gradient-to-r from-purple-950 via-purple-800 to-purple-950 hover:bg-purple-950 rounded-2xl py-[1vh] md:py-[0.5vh] px-[2vw] md:px-[1vw] hover:border-4 shadow-lg shadow-purple-800 dark:shadow-lg dark:shadow-purple-800">Reset</button>
+                </div>
+            </div>
+        </div>
+            
+        <!-- right half -->
+        <div>
+            <div class="gameInfo text-[8vw] md:text-[3vw] font-semibold text-purple-900">
+                <div>Welcome to TicTacToe</div>
+            </div>
+            <div id="imgbox" class="hidden md:flex md:items-center md:justify-center">
+                <div>
+                    <img id="winImg1" class="w-[0vw] ml-[3vw] transition-all duration-1000 ease-in-out" src="assets/HappySpongebob.gif" alt="Error">
+                    <img id="img1" class="w-[20vw]" src="assets/X-letter.gif" alt="X">
+                    <img id="winImg2" class="w-[0vw] ml-[3vw] transition-all duration-1000 ease-in-out" src="assets/HappySpongebob.gif" alt="Error">
+                    <img id="img2" class="w-[20vw]" src="assets/O-letter.gif" alt="O">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script src="assets/script.js"></script>
+</html>
